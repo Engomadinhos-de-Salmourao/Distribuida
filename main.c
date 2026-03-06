@@ -1,3 +1,11 @@
+/*
+    NOMES:                              RAs:
+    Edmilson Li Quansang                10425514
+    João Paulo B. Massabki              10425593
+    Pietro Caffettani                   10425628
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
