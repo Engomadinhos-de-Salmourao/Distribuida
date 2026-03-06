@@ -139,14 +139,14 @@ void adicionar_produto(Produto** prods, int* tam) {
     prod.preco = preco;
     prod.quantidade = qtd;
 
-
+    // Realocando memória
     Produto *temp = realloc(*prods, sizeof(Produto) * ((*tam) + 1));
     if (temp != NULL) {
         (*tam)++;
         *prods = temp;
 
         (*prods)[(*tam) - 1] = prod;
-        printf("Produto adicionado com códgo %d!\n", code);
+        printf("Produto adicionado com código %d!\n", code);
     }
     else {
         free(prod.nome);
@@ -161,10 +161,13 @@ void listar_produtos(Produto* prods, int tam) {
         printf("O estoque esta vazio.\n");
         return;
     }
+    // Criando tabela
     printf("+--------+----------------------+------------+-----+----------------+\n");
     printf("| %-6s | %-20s | %-11s | %-3s | %-14s |\n", "Código", "Nome", "Preço", "Qtd", "Valor Estoque");
     printf("+--------+----------------------+------------+-----+----------------+\n");
+    // Valor total do estoque
     float total = 0;
+    // Processando produtos
     for (int i = 0; i < tam; i++) {
         float preco = prods[i].preco;
         int qtd = prods[i].quantidade;
@@ -222,6 +225,8 @@ void remover_produto(Produto** prods, int* tam) {
     printf("Código do produto: ");
     scanf("%d", &code);
 
+    // Não usamos buscar_produto pois ele devolve um ponteiro.
+        // Sabendo o índice do Produto, é mais fácil arrumar a lista...
     for (int i = 0; i < (*tam); i++) {
         if ((*prods)[i].codigo == code) {
            encontrado = i;
@@ -229,6 +234,7 @@ void remover_produto(Produto** prods, int* tam) {
         }
     }
 
+    // Verificando se encontrou ou não o produto
     if (encontrado == -1) {
         printf("Produto não encontrado.\n");
         return;
@@ -254,7 +260,7 @@ void remover_produto(Produto** prods, int* tam) {
         if (temp != NULL) {
             *prods = temp;
         }
-        // Se falhar em reallocar, podemos ignorar o erro.
+        // Se falhar em reallocar, podemos ignorar a falha.
             // Um espaço vazio no fim da lista não interfere no código...
     } else {
         // Se a lista ficou vazia
@@ -265,11 +271,13 @@ void remover_produto(Produto** prods, int* tam) {
 }
 
 void liberar_memoria(Produto** prods, int* tam) {
+    // Liberando o espaço alocado para os nomes
     for (int i = 0; i < (*tam); i++) {
         printf("Memória do produto \"%s\" liberada.\n", (*prods)[i].nome);
         free((*prods)[i].nome);
     }
 
+    // Liberando o espaço alocado para a Lista
     free(*prods);
     printf("Vetor de produtos liberado\n");
     *prods = NULL;
