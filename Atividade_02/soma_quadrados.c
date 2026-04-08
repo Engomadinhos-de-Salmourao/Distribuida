@@ -14,7 +14,7 @@
     ou se for criar um codespace no nosso repositório, usar os comandos:
     cd Atividade_02             // Entrar no diretório correto
     make install                // Baixar o MPI
-    make build                  // compilar (opicional)
+    make build                  // compilar (opcional)
     make run                    // executar
     
     em make run temos --allow-run-as-root e --oversubscribe pra permitir rodar no codespace.
