@@ -8,8 +8,8 @@ install:
 
 # Compila o programa
 build:
-	$(CC) $(CFLAGS) MPI_sqr.c -o programa
+	$(CC) $(CFLAGS) soma_quadrados.c -o soma_quadrados
 
 # Atalho para rodar com 4 processos
 run:
-	mpirun --allow-run-as-root -np 4 ./programa
+	mpirun --allow-run-as-root --oversubscribe -np 4 ./programa
