@@ -12,4 +12,4 @@ build:
 
 # Atalho para rodar com 4 processos
 run:
-	mpirun --allow-run-as-root --oversubscribe -np 4 ./programa
+	mpirun --allow-run-as-root --oversubscribe -np 4 ./soma_quadrados

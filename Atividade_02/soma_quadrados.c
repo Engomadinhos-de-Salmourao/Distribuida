@@ -5,7 +5,18 @@
     Pietro Caffettani                   10425628
 
     Ps: rodamos o código em um codespace do Github com 4 cores. A lógica é exatamente a mesma,
-    mas adaptamos o run
+    mas adaptamos o mpirun para funcionar (na prática estamos forçando a criação de 4 processos em um único core,
+    já que os cores do codespace são virtuais e o MPI identifica isso e barra.)
+
+    Se for baixar o código na sua máquina, pode rodar com o 
+    mpirun -np 4 ./soma_quadrados
+    indicado no readme do enunciado da atividade
+    ou se for criar um codespace no nosso repositório, usar os comandos:
+    make install                // Baixar o MPI
+    make build                  // compilar (opicional)
+    make run                    // executar
+    
+    em make run temos --allow-run-as-root e --oversubscribe pra permitir rodar no codespace.
 */
 
 #include <mpi.h>     // Inclui a biblioteca do MPI, necessária para funções de comunicação paralela
