@@ -12,6 +12,7 @@
     mpirun -np 4 ./soma_quadrados
     indicado no readme do enunciado da atividade
     ou se for criar um codespace no nosso repositório, usar os comandos:
+    cd Atividade_02             // Entrar no diretório correto
     make install                // Baixar o MPI
     make build                  // compilar (opicional)
     make run                    // executar
