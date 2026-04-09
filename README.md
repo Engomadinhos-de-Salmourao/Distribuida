@@ -7,5 +7,5 @@ Repositório com todas as atividades realizadas na matéria de Computação dist
 
 ## Atividades (códigos):
 - [Atividade 1](Atividade_01/atividade_01_João_10425593.c)
-- [Atividade 2]
+- [Atividade 2](Atividade_02)
 - [Atividade 4](Atividade_02/soma_quadrados.c)
