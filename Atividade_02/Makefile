@@ -1,43 +1,16 @@
-# ============================================================
-# Makefile — Chat Multicliente (Parte 2)
-#
-# Uso:
-#   make          → compila servidor e cliente
-#   make clean    → remove binários
-#   make help     → mostra esta ajuda
-# ============================================================
-
 CC      = gcc
 CFLAGS  = -Wall -Wextra -pedantic -std=c11
+LDFLAGS_SRV = -lpthread
 
-SERVIDOR = server
-CLIENTE  = client
+all: servidor cliente
 
-ALL = $(SERVIDOR) $(CLIENTE)
+servidor: servidor.c jogo.c jogo.h protocolo.h
+	$(CC) $(CFLAGS) -o servidor servidor.c jogo.c $(LDFLAGS_SRV)
 
-.PHONY: all clean help
-
-all: $(ALL)
-	@echo ""
-	@echo "✅ Chat compilado com sucesso!"
-	@echo ""
-	@echo "Para testar:"
-	@echo "  Terminal 1:  ./server"
-	@echo "  Terminal 2:  ./client"
-	@echo "  Terminal 3:  ./client"
-
-$(SERVIDOR): server.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-$(CLIENTE): client.c
-	$(CC) $(CFLAGS) -o $@ $<
+cliente: cliente.c jogo.c jogo.h protocolo.h
+	$(CC) $(CFLAGS) -o cliente cliente.c jogo.c
 
 clean:
-	rm -f $(ALL)
-	@echo "🧹 Binários removidos."
+	rm -f servidor cliente
 
-help:
-	@echo "Alvos disponíveis:"
-	@echo "  make          Compila servidor e cliente do chat"
-	@echo "  make clean    Remove binários"
-	@echo "  make help     Mostra esta ajuda"
+.PHONY: all clean

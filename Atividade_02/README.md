@@ -1,3 +1,13 @@
+# Atividade 02 - Entrega
+
+| Integrantes | RA |
+| :---------- | :- |
+| Edmilson Li Quansang | 10425513 |
+| João Paulo Berto Massabki | 10425593 |
+| Pietro Caffettani | 10425628 |
+
+---
+
 # Batalha de palavras em rede
 
 Jogo multiplayer baseado em texto, implementado em C com **Sockets TCP** e **pthreads**.
