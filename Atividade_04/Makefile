@@ -3,8 +3,10 @@ CC = mpicc
 CFLAGS = -Wall
 
 # Instala as dependências no Ubuntu/Debian (Codespaces)
+# O sinal '-' antes do comando ignora erros de repositórios quebrados (como o do Yarn)
 install:
-	sudo apt-get update && sudo apt-get install -y openmpi-bin libopenmpi-dev
+	-sudo apt-get update
+	sudo apt-get install -y openmpi-bin libopenmpi-dev
 
 # Compila o programa
 build:

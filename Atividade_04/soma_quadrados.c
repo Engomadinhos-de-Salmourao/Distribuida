@@ -75,10 +75,16 @@ int main (int argc, char **argv) {
 
     // Output final, com valor encontrado + valor esperado
     if (rank == 0) {
-        printf("\nA soma Paralela dos quadrados foi: %d\n", total);
         // Para conferir: a soma de 1 a 40 é (40 * 41) / 2 = 820
         int s_esp = (N * (N + 1) * ((2 * N) + 1)) / 6;
-        printf("A soma sequencial esperada: %d\n", s_esp);
+        
+        if (total == s_esp) {
+            printf("\nA soma Paralela dos quadrados coincide com a sequencial: %d\n", total);
+        }
+        else 
+        {
+            printf("\nA soma Paralela não coincide com a sequencial:\n\tParalela: %d\n\tSequencial: %d\n",total, s_esp);
+        }
     }
 
     // Fechando :D
