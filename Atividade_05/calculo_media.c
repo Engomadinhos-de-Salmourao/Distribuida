@@ -63,7 +63,7 @@ int main (int argc, char **argv) {
     if (rank == 0) {
         media_total = soma_total / (N * size);
         
-        printf("\n\n[Soma Global] %f\n[Média Global] %f\n", soma_total, media_total);
+        printf("\n[Soma Global] %f\n[Média Global] %f\n\n", soma_total, media_total);
 
     }
 
