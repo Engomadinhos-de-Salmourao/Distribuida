@@ -4,20 +4,27 @@
     João Paulo B. Massabki              10425593
     Pietro Caffettani                   10425628
 
-    Ps: rodamos o código em um codespace do Github com 4 cores. A lógica é exatamente a mesma,
-    mas adaptamos o mpirun para funcionar (na prática estamos forçando a criação de 4 processos em um único core,
-    já que os cores do codespace são virtuais e o MPI identifica isso e barra.)
-
-    Se for baixar o código na sua máquina, pode rodar com o 
-    mpirun -np 4 ./soma_quadrados
-    indicado no readme do enunciado da atividade
-    ou se for criar um codespace no nosso repositório, usar os comandos:
-    cd Atividade_04             // Entrar no diretório correto
-    make install                // Baixar o MPI
-    make build                  // compilar (opcional)
-    make run                    // executar
+    Instruções de Execução:
     
-    em make run temos --allow-run-as-root e --oversubscribe pra permitir rodar no codespace.
+    1. Localmente (Máquina própria):
+       Pode rodar diretamente conforme o enunciado:
+       mpirun -np 5 ./transformacao_paralela
+    
+    2. No GitHub Codespaces:
+       Como o ambiente possui limitação de 4 cores virtuais, adaptamos o comando para 
+       funcionar via Makefile. Embora o enunciado peça 5 processos, o MPI identifica 
+       a falta de núcleos físicos e barraria a execução. Usamos as flags de suporte 
+       para contornar essa limitação.
+       
+       Comandos:
+       cd Atividade_06            // Entrar no diretório correto
+       make install               // Instalar as dependências do MPI (apenas uma vez)
+       make build                 // Compilar o programa transformacao_paralela.c
+       make run                   // Executar com 5 processos
+       
+    Nota: O 'make run' utiliza --allow-run-as-root e --oversubscribe. 
+    A flag --oversubscribe é vital aqui: ela força o MPI a criar os 5 processos 
+    compartilhando os mesmos núcleos virtuais, ignorando a trava de hardware do ambiente.
 */
 
 #include <mpi.h>     // Inclui a biblioteca do MPI, necessária para funções de comunicação paralela
